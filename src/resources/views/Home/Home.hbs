@@ -1,0 +1,40 @@
+<div class="wapper">
+  <h1>Sản Phẩm</h1>
+  <form class="form-inline my-4" action="/home/search" method="get">
+    <input class="form-control mr-sm-2 w-75" name="search_input" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+    {{#each sanphams}}
+      <div class="card" style="width: 18rem">
+        <a href="/home/find/{{this._id}}"><div class="img">
+            <img class="card-img-top" src="{{this.img}}" alt="Card image cap" />
+          </div>
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">{{this.name}}</h5>
+          <p class="card-text">{{this.decription}}</p>
+          <p class="card-text">{{this.price}} .VND</p>
+          <form method="post" action="/cart/addToCart/{{this._id}}">
+            <input type="hidden" name="product_id" value="{{this._id}}" />
+            <input type="hidden" name="product_name" value="{{this.name}}" />
+            <input type="hidden" name="product_price" value="{{this.price}}" />
+            <button type="submit" class="btn btn-primary">Thêm vào giỏ hàng</button>
+          </form>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  <br>
+  <div class="pagination">
+    {{#if (gt currentPage  1)}}
+      <a href="/home?page={{subtract currentPage 1}}" class="page-link"> << </a>
+    {{/if}}
+    {{#each pages}}
+      <a href="/home?page={{this}}" class="page-link" {{#if (eq this currentPage)}}style="color:red;"{{/if}}>{{this}}</a>
+    {{/each}}
+    {{#if (lt currentPage totalPages)}}
+      <a href="/home?page={{sum currentPage 1}}" class="page-link"> >> </a>
+    {{/if}} 
+  </div>
+</div>

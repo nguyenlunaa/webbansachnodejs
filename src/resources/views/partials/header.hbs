@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarTogglerDemo03"
+    aria-controls="navbarTogglerDemo03"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    {{#if user}}
+      {{#if (eq user.isAdmin "true")}}
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/home">Giao Diện Trang Chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/getall">Quản Lý Loại Sách</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/sanphams/getAll">Quản Lý Sách</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/oder/getList">Quản Lý Hóa Đơn</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users">Quản Lý Danh Sách Người Dùng</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/home/thongke">Thống Kê</a>
+          </li>
+        </ul>
+      {{/if}}
+      {{#if (eq user.isAdmin "false")}}
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/home">Trang Chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/cart/listCart">Giỏ hàng</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/home/gioithieu">Giới Thiệu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/home/lienhe">Liên Hệ</a>
+          </li>
+        </ul>
+      {{/if}}
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" style="color: red;">Xin chào {{user.username}}</a>
+        </li>
+        <li class="nav-item">
+          <form class="form-inline" method="post" action="/home/logout">
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Đăng xuất</button>
+          </form>
+        </li>
+      </ul>
+    {{else}}
+      <a class="navbar-brand" href="/home/login">Login</a>
+    {{/if}}
+  </div>
+</nav>

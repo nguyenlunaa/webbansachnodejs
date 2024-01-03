@@ -1,0 +1,25 @@
+<h2 style="text-align: center; color: #333;">Quản lý danh sách đơn hàng</h2>
+
+{{#each order}}
+  <div style="border: 1px solid #ddd; padding: 10px; margin-bottom: 15px;">
+    <!-- Hiển thị mã đơn hàng, tổng đơn hàng và tên người đặt hàng -->
+    <p style="color: red;">
+      Mã đơn hàng: {{this._id}} -
+      Tổng đơn hàng: {{this.totalPrice}} .VND-
+      Người đặt hàng: {{this.user}}
+    </p>
+    
+    <!-- Hiển thị các sản phẩm trong đơn hàng -->
+    <ul style="list-style-type: none; padding: 0;">
+    <ul class="order-items-list">
+      {{#each this.OrderItems}}
+        <li>
+          {{this.product.name}} -
+          Số lượng: {{this.product.quantity}} -
+          Giá: {{this.product.price}} .VND
+        </li>
+      {{/each}}
+    </ul>
+    </ul>
+  </div>
+{{/each}}

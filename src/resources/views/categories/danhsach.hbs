@@ -1,0 +1,33 @@
+<div class="wapper">
+  <div>
+    <h1>Danh sách thể loại sản phẩm</h1>
+    <a href="/categories/show">Thêm mới thể loại sản phẩm</a>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each categories}}
+            <tr>
+              <th scope="row">{{this.name}}</th>
+              <td><a
+                  type="button"
+                  href="/categories/edit/{{this._id}}"
+                  class="btn btn-warning"
+                >Sửa</a>
+                <a
+                  type="button"
+                  href="/categories/delete/{{this._id}}"
+                  class="btn btn-danger"
+                >Xóa</a></td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

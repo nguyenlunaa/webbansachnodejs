@@ -1,0 +1,26 @@
+
+@import "variable";
+
+h1{
+    font-size: 20px;
+    color: $color_red;
+    
+}
+.search_form{
+    width: 900px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+    div.flex_home {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 20px;
+        grid-gap: 2.4rem;
+    }
+
+.p-10{
+    padding: 20px;
+}
+

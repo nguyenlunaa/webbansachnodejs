@@ -1,0 +1,90 @@
+<div class="wrapper">
+  <nav class="navbar navbar-light bg-light">
+    <form class="form-inline" action="/search" method="get">
+      <input class="form-control mr-sm-2" name="search_input" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </nav>
+
+  <div class="button-heading mt-3 d-flex justify-content-between align-items-center">
+    <h2>Danh sách sản phẩm</h2>
+    <a href="/sanphams/create" type="button" class="btn btn-primary">Thêm mới</a>
+  </div>
+
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Hình ảnh</th>
+        <th scope="col">Giá tiền {{{sortable 'price' _sort}}} </th>
+        <th scope="col">Mô tả sản phẩm</th>
+        <th scope="col">Thao tác</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each currentItems}}
+        <tr>
+          <th scope="row">{{this.name}}</th>
+          <td><a href="/sanphams/find/{{this._id}}"><img src="{{this.img}}" style="width: 60px; height: 100px" /></a></td>
+          <td>{{this.price}}</td>
+          <td>{{this.decription}}</td>
+          <td>
+            <a href="/sanphams/edit/{{this._id}}" class="btn btn-warning">Sửa</a>
+            <a data-toggle="modal" data-target="#delete_sp" data-id="{{this._id}}" class="btn btn-danger">Xóa</a>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <div class="pagination mt-3">
+    {{#if (gt currentPage 1)}}
+      <a href="/sanphams/getAll?page={{subtract currentPage 1}}" class="btn btn-primary"> << </a>
+    {{/if}}
+    {{#each pages}}
+      <a href="/sanphams/getAll?page={{this}}" class="btn btn-primary {{#if (eq this currentPage)}}active{{/if}}">{{this}}</a>
+    {{/each}}
+    {{#if (lt currentPage totalPages)}}
+      <a href="/sanphams/getAll?page={{sum currentPage 1}}" class="btn btn-primary"> >> </a>
+    {{/if}}
+  </div>
+</div>
+
+<div class="modal fade" id="delete_sp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cảnh Báo?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Admin Có Muốn Xóa Sách Này Hay Không ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+        <button type="button" id="btn_delete_sp" class="btn btn-danger">Xóa</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form name="delete-sp" method="post"></form>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var spid;
+    var delete_form = document.forms["delete-sp"]
+    var btnDelete = document.getElementById("btn_delete_sp")
+
+    $('#delete_sp').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget)
+      spid = button.data('id')
+    })
+
+    btnDelete.onclick = function () {
+      delete_form.action = "/sanphams/delete/" + spid + "?_method=DELETE"
+      delete_form.submit()
+    }
+  })
+</script>

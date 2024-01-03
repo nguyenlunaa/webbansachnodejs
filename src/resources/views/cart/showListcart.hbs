@@ -1,0 +1,24 @@
+{{#if count}}
+  <!-- Hiển thị nội dung khi mảng cart có ít nhất 1 phần tử -->
+  <p>Giỏ hàng của bạn có {{count}} sản phẩm.</p>
+  <!-- Đặc biệt, bạn có thể lặp qua các phần tử trong mảng và hiển thị chi tiết sản phẩm -->
+  <ul>
+    {{#each cart}}
+      <li>{{this.name}} - {{this.price}} </li>
+      <div><form method="post" name="update_pr" action="/cart/increase-quantity/{{this.id}}?_method=POST"><button type="submit">Cộng</button></form>
+      <span>{{this.quantity}}</span>
+      <form method="post" name="update_pr" action="/cart/decrease-quantity/{{this.id}}?_method=POST"><button type="submit">Trừ</button></form></div>
+      <form method="post" action="/cart/removie/{{this.id}}">
+        <button type="submit">Remove</button>
+      </form>
+    {{/each}}
+    <p>Tổng giá trị hóa đơn: {{total}} .VND</p>
+  </ul>
+  <a href="/cart/oder" >Tiến hành thanh toán</a>
+{{else}}
+  <!-- Hiển thị nội dung khi mảng cart rỗng -->
+  <p>Giỏ hàng của bạn đang trống.</p>
+{{/if}}
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+></script>

@@ -1,0 +1,53 @@
+<div class="wapper">
+  <div>
+    <h2>Chỉnh Sửa Tài Khoản</h2>
+  </div>
+  <form method="post" action="/users/{{sp._id}}?_method=PUT">
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Tài Khoản</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Nhập username"
+        name="username"
+        value="{{sp.username}}"
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Email</label>
+      <input
+        value="{{sp.email}}"
+        type="email"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Nhập email"
+        name="email"
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Mật Khẩu</label>
+      <input
+        value="{{sp.password}}"
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Nhập vào password"
+        name="password"
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Số Điện Thoại</label>
+      <input
+        value="{{sp.phone}}"
+        type="text"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Nhập vào số diện thoại"
+        name="phone"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Cập Nhật</button>
+  </form>
+</div>

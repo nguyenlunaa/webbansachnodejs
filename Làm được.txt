@@ -1,0 +1,7 @@
+Đăng kí , đăng nhập
+Crud, phân trang
+Quản lý sản phẩm
+Quản lý người dùng
+Quản lý đơn hàng
+Mua hàng
+Thanh toánnn

@@ -1,0 +1,110 @@
+{{!-- <h1>Thông tin chi tiết sản phẩm</h1>
+<a>Tên sản phẩm :{{sp.name}}</a></br>
+<a>Giá sản phẩm :{{sp.price}}</a></br>
+<a>Thông tin sản phẩm :{{sp.decription}}</a></br>
+<img src={{sp.img}} width="400px" height="500px" />
+<form method="post" action="/cart/addToCart/{{sp._id}}">
+    <input type="hidden" name="product_id" value="{{sp._id}}" />
+    <input type="hidden" name="product_name" value="{{sp.name}}" />
+    <input type="hidden" name="product_price" value="{{sp.price}}" />
+    <button type="submit" class="btn btn-primary">Thêm vào giỏ hàng</button>
+</form> --}}
+{{!-- <div style="font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f4f4f4; color: #333; text-align: center;">
+
+    <h1 style="color: #2c3e50;">Thông Tin Chi Tiết Sản Phẩm</h1>
+    <img src={{sp.img}} alt="{{sp.name}}" style="max-width: 10%; height: auto; border: 1px solid #ddd; border-radius: 4px; margin-top: 20px;">
+
+    <a style="display: block; margin-bottom: 10px; color: #3498db; text-decoration: none; font-size: 18px;">Tên sản phẩm: {{sp.name}}</a>
+    <a style="display: block; margin-bottom: 10px; color: #3498db; text-decoration: none; font-size: 18px;">Giá sản phẩm: {{sp.price}}</a>
+    <a style="display: block; margin-bottom: 10px; color: #3498db; text-decoration: none; font-size: 18px;">Thông tin sản phẩm: {{sp.decription}}</a>
+
+    
+
+    <form method="post" action="/cart/addToCart/{{sp._id}}" style="margin-top: 20px;">
+        <input type="hidden" name="product_id" value="{{sp._id}}" />
+        <input type="hidden" name="product_name" value="{{sp.name}}" />
+        <input type="hidden" name="product_price" value="{{sp.price}}" />
+        <button type="submit" style="padding: 10px 20px; font-size: 16px; background-color: #3498db; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Thêm vào giỏ hàng</button>
+    </form>
+
+</div> --}}
+
+
+
+<div style="font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f4f4f4; color: #333; text-align: center;">
+    <h1 style="color: #2c3e50;">Thông Tin Chi Tiết Sản Phẩm</h1>
+    <div style="max-width: 600px; margin: 0 auto; background-color: #fff; padding: 20px; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin-top: 20px;">
+        <img src={{sp.img}} alt="{{sp.name}}" style="max-width: 50%; height: auto; border: 1px solid #ddd; border-radius: 4px; margin-top: 20px;">
+        <a style="display: block; margin-bottom: 10px; color: #3498db; text-decoration: none; font-size: 18px;">Tên sản phẩm: {{sp.name}}</a>
+        <a style="display: block; margin-bottom: 10px; color: #3498db; text-decoration: none; font-size: 18px;">Giá sản phẩm: {{sp.price}} .VND</a>
+        <a style="display: block; margin-bottom: 10px; color: #3498db; text-decoration: none; font-size: 18px;">Thông tin sản phẩm: {{sp.decription}}</a>
+        <form method="post" action="/cart/addToCart/{{sp._id}}" style="margin-top: 20px;">
+            <input type="hidden" name="product_id" value="{{sp._id}}" style="display: none;" />
+            <input type="hidden" name="product_name" value="{{sp.name}}" style="display: none;" />
+            <input type="hidden" name="product_price" value="{{sp.price}}" style="display: none;" />
+            <button type="submit" style="padding: 10px 20px; font-size: 16px; background-color: #3498db; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Thêm vào giỏ hàng</button>
+        </form>
+        <div style="text-align: left; margin-top: 20px;">
+            <h2>Đánh Giá Sản Phẩm Của Bạn</h2>
+            <!-- Form nhập đánh giá -->
+            <form method="post" action="/product/review/{{sp._id}}">
+                <label for="review" style="display: block; margin-top: 10px;">Nhận xét của bạn:</label>
+                <textarea name="review" id="review" rows="4" cols="50" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;"></textarea><br>
+                <label for="rating" style="display: block; margin-top: 10px;">Đánh giá:</label>
+                <select name="rating" id="rating" style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="5">5 sao</option>
+                    <option value="4">4 sao</option>
+                    <option value="3">3 sao</option>
+                    <option value="2">2 sao</option>
+                    <option value="1">1 sao</option>
+                </select><br>
+                <button type="submit" style="padding: 10px 20px; font-size: 16px; background-color: #3498db; color: #fff; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px;">Gửi đánh giá</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{{!-- <div style="font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f4f4f4; color: #333; text-align: center;">
+
+    <h1 style="color: #2c3e50;">Thông Tin Chi Tiết Sản Phẩm</h1>
+
+    <div style="max-width: 600px; margin: 0 auto; background-color: #fff; padding: 20px; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin-top: 20px;">
+
+        <a style="display: block; margin-bottom: 10px; color: #3498db; text-decoration: none; font-size: 18px;">Tên sản phẩm: {{sp.name}}</a>
+        <a style="display: block; margin-bottom: 10px; color: #3498db; text-decoration: none; font-size: 18px;">Giá sản phẩm: {{sp.price}}</a>
+        <a style="display: block; margin-bottom: 10px; color: #3498db; text-decoration: none; font-size: 18px;">Thông tin sản phẩm: {{sp.decription}}</a>
+
+        <img src={{sp.img}} alt="{{sp.name}}" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; margin-top: 20px;">
+
+        <form method="post" action="/cart/addToCart/{{sp._id}}" style="margin-top: 20px;">
+
+            <input type="hidden" name="product_id" value="{{sp._id}}" style="display: none;" />
+            <input type="hidden" name="product_name" value="{{sp.name}}" style="display: none;" />
+            <input type="hidden" name="product_price" value="{{sp.price}}" style="display: none;" />
+
+            <button type="submit" style="padding: 10px 20px; font-size: 16px; background-color: #3498db; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Thêm vào giỏ hàng</button>
+
+        </form>
+        <div style="text-align: left; margin-top: 20px;">
+            <h2>Đánh Giá Sản Phẩm Của Bạn</h2>
+            <!-- Form nhập đánh giá -->
+            <form method="post" action="/product/review/{{sp._id}}">
+                <label for="review" style="display: block; margin-top: 10px;">Nhận xét của bạn:</label>
+                <textarea name="review" id="review" rows="4" cols="50" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;"></textarea><br>
+                <label for="rating" style="display: block; margin-top: 10px;">Đánh giá:</label>
+                <select name="rating" id="rating" style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="5">5 sao</option>
+                    <option value="4">4 sao</option>
+                    <option value="3">3 sao</option>
+                    <option value="2">2 sao</option>
+                    <option value="1">1 sao</option>
+                </select><br>
+                <button type="submit" style="padding: 10px 20px; font-size: 16px; background-color: #3498db; color: #fff; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px;">Gửi đánh giá</button>
+            </form>
+        </div>
+    </div>
+</div> --}}
+
+
+
